@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FM Wholesaler — Nails, Cosmetics, Machines & Decorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --paper:#FBF1EA;
+    --ink:#2B1330;
+    --ink-soft:#5A3560;
+    --berry:#91234F;
+    --berry-dark:#701A3D;
+    --gold:#C9A15A;
+    --steel:#6B7280;
+    --lilac:#9B8AC4;
+    --whatsapp:#25D366;
+    --card:#FFFFFF;
+    --text-light:#F7EFEA;
+    --shadow: rgba(43,19,48,0.14);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.5;
+}
+
+h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+}
+
+a{ color:inherit; }
+
+img{ display:block; max-width:100%; }
+
+:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero{
+    background:radial-gradient(120% 160% at 15% -10%, #4a2452 0%, var(--ink) 55%, #200e26 100%);
+    color:var(--text-light);
+    padding:64px 24px 48px;
+    text-align:center;
+}
+
+.hero .mark{
+    display:inline-block;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:56px;
+    color:var(--gold);
+    line-height:1;
+    animation: fade-up 0.7s ease both;
+}
+
+.hero h1{
+    font-size:clamp(32px,6vw,52px);
+    margin-top:4px;
+    animation: fade-up 0.7s 0.05s ease both;
+}
+
+.hero p{
+    max-width:520px;
+    margin:16px auto 0;
+    font-size:16px;
+    color:#E7D7EA;
+    animation: fade-up 0.7s 0.1s ease both;
+}
+
+@keyframes fade-up{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+/* Swatch-chip nav: reads like a shelf of polish caps, one chip per category */
+.swatches{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+    margin-top:36px;
+    animation: fade-up 0.7s 0.15s ease both;
+}
+
+.swatch{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    color:var(--text-light);
+}
+
+.swatch .cap{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    box-shadow:
+        inset 0 6px 10px rgba(255,255,255,0.35),
+        inset 0 -8px 12px rgba(0,0,0,0.25),
+        0 6px 14px var(--shadow);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swatch:hover .cap, .swatch:focus-visible .cap{
+    transform:translateY(-4px) scale(1.06);
+}
+
+.swatch span.label{
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.02em;
+}
+
+.cap.nails{ background:radial-gradient(circle at 35% 30%, #d46b93, var(--berry)); }
+.cap.cosmetics{ background:radial-gradient(circle at 35% 30%, #e3c98a, var(--gold)); }
+.cap.machines{ background:radial-gradient(circle at 35% 30%, #9aa1a9, var(--steel)); }
+.cap.decor{ background:radial-gradient(circle at 35% 30%, #c3b6e0, var(--lilac)); }
+.cap.house{ background:radial-gradient(circle at 35% 30%, rgb(160, 134, 246), var(--lilac)); }
+
+/* ---------- Category cards (styled like hang-tags) ---------- */
+
+.section-label{
+    text-align:center;
+    padding:56px 24px 8px;
+    max-width:640px;
+    margin:0 auto;
+}
+
+.section-label h2{
+    font-size:clamp(24px,4vw,32px);
+}
+
+.section-label p{
+    color:var(--ink-soft);
+    margin-top:8px;
+    font-size:15px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:28px;
+    padding:24px 24px 16px;
+    max-width:1080px;
+    margin:0 auto;
+}
+
+.card{
+    position:relative;
+    background:var(--card);
+    border-radius:4px 16px 16px 16px;
+    overflow:hidden;
+    box-shadow:0 10px 24px var(--shadow);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px) rotate(-0.4deg);
+    box-shadow:0 16px 32px var(--shadow);
+}
+
+/* the little punched hole that makes the card read as a hang-tag */
+.card::before{
+    content:"";
+    position:absolute;
+    top:14px;
+    left:14px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid rgba(43,19,48,0.18);
+    z-index:2;
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:20px 18px 22px;
+}
+
+.card-content .tag-label{
+    display:inline-block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--berry);
+    margin-bottom:6px;
+}
+
+.card-content h3{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.btn{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--text-light);
+    padding:10px 20px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+    transition:background 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover{ background:var(--berry-dark); }
+
+/* ---------- Promo band ---------- */
+
+.promo{
+    background:linear-gradient(120deg, var(--berry-dark), var(--berry));
+    color:var(--text-light);
+    margin:48px 24px 0;
+    padding:32px 28px;
+    border-radius:18px;
+    text-align:center;
+    max-width:900px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.promo h2{
+    font-size:clamp(20px,3.4vw,26px);
+    margin-bottom:8px;
+}
+
+.promo p{
+    font-size:15px;
+    color:#F6E2EA;
+    margin-bottom:18px;
+}
+
+.promo .btn{
+    background:var(--gold);
+    color:var(--ink);
+}
+
+.promo .btn:hover{ background:#dcb26e; }
+
+/* ---------- Contact ---------- */
+
+.contact{
+    padding:56px 24px 32px;
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+}
+
+.contact h2{ font-size:clamp(24px,4vw,30px); }
+
+.contact-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:28px;
+}
+
+.contact-card{
+    background:var(--card);
+    border-radius:16px;
+    padding:26px 20px;
+    box-shadow:0 10px 24px var(--shadow);
+}
+
+.contact-card p.eyebrow{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+}
+
+.contact-card p.value{
+    font-size:17px;
+    font-weight:700;
+    margin-bottom:16px;
+}
+
+.contact-card a.action{
+    display:inline-block;
+    padding:10px 22px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:14px;
+}
+
+.contact-card.whatsapp a.action{
+    background:var(--whatsapp);
+    color:white;
+}
+
+.contact-card.instagram a.action{
+    background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
+    color:white;
+}
+
+/* ---------- Footer ---------- */
+
+footer{
+    background:var(--ink);
+    color:#C9B7CE;
+    text-align:center;
+    padding:24px;
+    margin-top:40px;
+    font-size:13px;
+}
+/* ---------- Notice popup ---------- */
+
+.notice-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(43,19,48,0.55);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+}
+
+.notice-overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.notice-card{
+    position:relative;
+    background:var(--card);
+    border-radius:4px 18px 18px 18px;
+    max-width:380px;
+    width:100%;
+    padding:28px 26px 26px;
+    text-align:center;
+    box-shadow:0 20px 44px rgba(43,19,48,0.35);
+    transform:translateY(14px);
+    transition:transform 0.25s ease;
+}
+
+.notice-overlay.show .notice-card{
+    transform:translateY(0);
+}
+
+.notice-card::before{
+    content:"";
+    position:absolute;
+    top:14px;
+    left:14px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid rgba(43,19,48,0.18);
+}
+
+.notice-card .tag-label{
+    display:block;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--berry);
+    margin-bottom:10px;
+}
+
+.notice-card h3{
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.notice-card p{
+    color:var(--ink-soft);
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.notice-card p.urdu{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:20px;
+}
+
+.notice-card .btn{
+    margin-top:6px;
+}
+
+.notice-close{
+    position:absolute;
+    top:12px;
+    right:14px;
+    background:none;
+    border:none;
+    font-size:20px;
+    line-height:1;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:4px;
+}
+
+.notice-close:hover{ color:var(--berry); }
+
+/* ---------- Floating WhatsApp ---------- */
+
+.whatsapp-float{
+    position:fixed;
+    width:58px;
+    height:58px;
+    bottom:20px;
+    right:20px;
+    background:var(--whatsapp);
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3);
+    z-index:10;
+}
+
+.whatsapp-float svg{ width:28px; height:28px; }
+
+@media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation:none !important; transition:none !important; }
+}
+
+@media (max-width:480px){
+    .swatches{ gap:18px; }
+    .swatch .cap{ width:44px; height:44px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+    <span class="mark">FM</span>
+    <h1>Wholesaler</h1>
+    <p>Nail products, cosmetics, salon machines and decorations — stocked for shops, priced for wholesale.</p>
+
+    <nav class="swatches" aria-label="Product categories">
+        <a class="swatch" href="#nails"><span class="cap nails"></span><span class="label">Nails</span></a>
+        <a class="swatch" href="#cosmetics"><span class="cap cosmetics"></span><span class="label">Cosmetics</span></a>
+        <a class="swatch" href="#machines"><span class="cap machines"></span><span class="label">Machines</span></a>
+        <a class="swatch" href="#decor"><span class="cap decor"></span><span class="label">Decorations</span></a>
+        <a class="swatch" href="#house"><span class="cap house"></span><span class="label">HouseHold</span></a>
+    </nav>
+</header>
+
+<div class="section-label">
+    <h2>What we stock</h2>
+    <p>Five categories, one supplier. Order what your shop needs and we'll pack it by the case.</p>
+</div>
+
+<section class="products">
+
+    <!-- Nails -->
+    <div class="card" id="nails">
+        <a href="nails.html">
+            <img src="assets/81pxCPsQnoL._SL1500_.jpg" alt="Nail products">
+        </a>
+        <div class="card-content">
+            <span class="tag-label">Category</span>
+            <h3>Nail Products</h3>
+            <p>Gel polish, nail art tools, and press-ons packed in bulk cases.</p>
+            <a class="btn" href="nails.html">View nail products</a>
+        </div>
+    </div>
+
+    <!-- Cosmetics -->
+    <div class="card" id="cosmetics">
+        <a href="cosmetics.html">
+            <img src="assets/WhatsApp Image 2026-07-16 at 8.13.03 PM.jpeg" alt="Cosmetics">
+        </a>
+        <div class="card-content">
+            <span class="tag-label">Category</span>
+            <h3>Cosmetics</h3>
+            <p>Foundations, lip products and skincare, packed for resale.</p>
+            <a class="btn" href="cosmetics.html">View cosmetics</a>
+        </div>
+    </div>
+
+    <!-- Machines -->
+    <div class="card" id="machines">
+        <a href="machines.html">
+            <img src="assets/machine.jpg" alt="Salon machines">
+        </a>
+        <div class="card-content">
+            <span class="tag-label">Category</span>
+            <h3>Machines</h3>
+            <p>Facial steamers, dryers and salon equipment built for daily use.</p>
+            <a class="btn" href="machines.html">View machines</a>
+        </div>
+    </div>
+
+    <!-- Decorations -->
+    <div class="card" id="decor">
+        <a href="decorations.html">
+            <img src="assets/decor.jpg" alt="Decorations">
+        </a>
+        <div class="card-content">
+            <span class="tag-label">Category</span>
+            <h3>Decorations</h3>
+            <p>Balloons, backdrops and event decor for shops and stylists.</p>
+            <a class="btn" href="decorations.html">View decorations</a>
+        </div>
+    </div>
+<!-- Household -->
+    <div class="card" id="house">
+        <a href="decorations.html">
+            <img src="assets/WhatsApp Image 2026-07-16 at 11.20.25 PM.jpeg" alt="Decorations">
+        </a>
+        <div class="card-content">
+            <span class="tag-label">Category</span>
+            <h3>Household</h3>
+            <p>Practical household products for everyday comfort.</p>
+            <a class="btn" href="decorations.html">View household</a>
+        </div>
+    </div>
+</section>
+
+<div class="promo">
+    <h2>Buying for a shop?</h2>
+    <p>Order 12 or more pieces of any item and ask about our wholesale rate.</p>
+    <a class="btn" href="https://wa.me/923258455725" target="_blank">Ask on WhatsApp</a>
+</div>
+
+<section class="contact">
+    <h2>Get in touch</h2>
+    <div class="contact-cards">
+        <div class="contact-card whatsapp">
+            <p class="eyebrow">WhatsApp</p>
+            <p class="value">+92 325 8455725</p>
+            <a class="action" href="https://wa.me/923258455725" target="_blank">Order on WhatsApp</a>
+        </div>
+        <div class="contact-card instagram">
+            <p class="eyebrow">Instagram</p>
+            <p class="value">@fm123890</p>
+            <a class="action" href="https://instagram.com/fm123890" target="_blank">See new stock</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 # Wholesaler — nails, cosmetics, machines &amp; decorations, wholesale.
+</footer>
+
+<!-- Floating WhatsApp -->
+<a class="whatsapp-float" href="https://wa.me/923258455725" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.9c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8h-.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.6 1.2 1.2-4.5-.3-.4C5.2 17.6 4.7 16 4.7 15c0-6.2 5.1-11.3 11.3-11.3S27.3 8.8 27.3 15 22.2 24.8 16 24.8zm6.2-8.4c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.1-.2.3-.8 1.1-1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/>
+    </svg>
+</a>
+<!-- Delivery notice popup -->
+<div class="notice-overlay" id="deliveryNotice" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+    <div class="notice-card">
+        <button class="notice-close" id="noticeClose" aria-label="Close notice">&times;</button>
+        <span class="tag-label">Notice</span>
+        <h3 id="noticeTitle">Prices don't include delivery</h3>
+        <p>All prices shown on this site are wholesale prices only. Delivery charges are added separately based on your location.</p>
+        <p class="urdu">تمام قیمتیں ڈیلیوری چارجز کے بغیر ہیں۔ ڈیلیوری چارجز مقام کے مطابق علیحدہ سے شامل کیے جائیں گے۔</p>
+        <b style="color: red;">Original product photos are also available via WhatsApp upon request.</b>
+        <a class="btn" id="noticeOk">Okay, got it</a>
+    </div>
+</div>
+
+<script>
+(function(){
+    var overlay = document.getElementById('deliveryNotice');
+    var closeBtn = document.getElementById('noticeClose');
+    var okBtn = document.getElementById('noticeOk');
+
+    function openNotice(){
+        overlay.classList.add('show');
+    }
+
+    function closeNotice(){
+        overlay.classList.remove('show');
+        // sessionStorage.setItem('deliveryNoticeSeen', '1');
+    }
+
+    window.addEventListener('load', function(){
+        setTimeout(openNotice, 300);
+    });
+
+    closeBtn.addEventListener('click', closeNotice);
+    okBtn.addEventListener('click', closeNotice);
+
+    overlay.addEventListener('click', function(e){
+        if(e.target === overlay) closeNotice();
+    });
+
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') closeNotice();
+    });
+})();
+</script>
+</script>
+</body>
+</html>

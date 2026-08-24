@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nail Products — fm Wholesaler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --paper:#FBF1EA;
+    --ink:#2B1330;
+    --ink-soft:#5A3560;
+    --berry:#91234F;
+    --berry-dark:#701A3D;
+    --gold:#C9A15A;
+    --card:#FFFFFF;
+    --text-light:#F7EFEA;
+    --shadow: rgba(43,19,48,0.14);
+    --whatsapp:#25D366;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.5;
+}
+
+h1,h2,h3{ font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em; }
+
+a{ color:inherit; }
+img{ display:block; max-width:100%; }
+
+:focus-visible{ outline:3px solid var(--gold); outline-offset:3px; }
+
+/* ---------- Page header ---------- */
+
+.page-header{
+    background:radial-gradient(120% 160% at 15% -10%, #4a2452 0%, var(--ink) 55%, #200e26 100%);
+    color:var(--text-light);
+    padding:36px 24px 40px;
+    text-align:center;
+}
+
+.breadcrumb{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:600;
+    color:#D8B7DB;
+    text-decoration:none;
+    margin-bottom:18px;
+}
+
+.breadcrumb:hover{ color:var(--gold); }
+
+.tag-label.eyebrow{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+}
+
+.page-header h1{
+    font-size:clamp(30px,6vw,44px);
+}
+
+.page-header p{
+    max-width:480px;
+    margin:12px auto 0;
+    color:#E7D7EA;
+    font-size:15px;
+}
+
+/* ---------- Product grid ---------- */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:26px;
+    padding:36px 24px 20px;
+    max-width:1080px;
+    margin:0 auto;
+}
+
+.card{
+    position:relative;
+    background:var(--card);
+    border-radius:4px 16px 16px 16px;
+    overflow:hidden;
+    box-shadow:0 10px 24px var(--shadow);
+    text-align:center;
+    padding-bottom:20px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-6px) rotate(-0.4deg);
+    box-shadow:0 16px 32px var(--shadow);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:14px;
+    left:14px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2px solid rgba(43,19,48,0.18);
+    z-index:2;
+}
+
+.card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.card h3{
+    font-size:19px;
+    margin:16px 14px 6px;
+}
+
+.card p{
+    padding:0 16px;
+    color:var(--ink-soft);
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.card .price{
+    color:var(--berry);
+    font-family:'Manrope',sans-serif;
+    font-weight:800;
+    font-size:18px;
+    margin:6px 0 14px;
+}
+
+.btn{
+    display:inline-block;
+    background:var(--whatsapp);
+    color:white;
+    text-decoration:none;
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:14px;
+    transition:background 0.2s ease;
+}
+
+.btn:hover{ background:#1ebe5d; }
+
+/* ---------- Bottom note ---------- */
+
+.bulk-note{
+    max-width:640px;
+    margin:24px auto 56px;
+    padding:20px 24px;
+    text-align:center;
+    background:var(--card);
+    border-radius:16px;
+    box-shadow:0 10px 24px var(--shadow);
+    font-size:14px;
+    color:var(--ink-soft);
+}
+
+.bulk-note strong{ color:var(--berry); }
+
+/* ---------- Footer ---------- */
+
+footer{
+    background:var(--ink);
+    color:#C9B7CE;
+    text-align:center;
+    padding:24px;
+    font-size:13px;
+}
+
+/* ---------- Floating WhatsApp ---------- */
+
+.whatsapp-float{
+    position:fixed;
+    width:58px;
+    height:58px;
+    bottom:20px;
+    right:20px;
+    background:var(--whatsapp);
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3);
+    z-index:10;
+}
+
+.whatsapp-float svg{ width:28px; height:28px; }
+
+@media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="page-header">
+    <a class="breadcrumb" href="fmwholeseller.html">&larr; Back to home</a><br>
+    <span class="tag-label eyebrow">Category</span>
+    <h1>Nail Products</h1>
+    <p>Gel polish, extension kits, art tools and finishing products — priced for shops buying in bulk.</p>
+</header>
+
+<section class="products">
+
+    <div class="card">
+        <img src="assets/nails/1500 nail polish set.jpg" alt="Nail polish set">
+        <h3>Nail Polish Set</h3>
+        <p>Premium quality nail polish set, long-wear finish.</p>
+        <p class="price">Rs. 1500</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/nails/nails 250 each set.jpg" alt="Nail extension kit">
+        <h3>Nail Extension </h3>
+        <p>Professional nail of acrylic and gel extensions.</p>
+        <p class="price">Rs. 250 (per set)</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/nails/nails 230.jpg" alt="Nail brush set">
+        <h3>Decorative nail extention</h3>
+        <p>beautiful nail extention with stickers.</p>
+        <p class="price">Rs. 230 (each set)</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/nails/nails 200.jpg" alt="UV gel">
+        <h3>Natural looking extention</h3>
+        <p>Fine shaped natural looking nails.</p>
+        <p class="price">Rs. 200</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/nails/nail glue 250 5pcs.jpg" alt="Nail stickers">
+        <h3>Nail Glue</h3>
+        <p>Ready-to-apply on decorative nail. <br> pack of 5 Pcs</p>
+        <p class="price">Rs. 250</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+    <div class="card">
+        <img src="assets/nails/nail remover.jpg" alt="Nail polish remover">
+        <h3>Nail Polish Remover</h3>
+        <p>Professional-strength remover solution.</p>
+        <p class="price">Rs. 250</p>
+        <a href="https://wa.me/923258455725" class="btn" target="_blank">Order on WhatsApp</a>
+    </div>
+
+</section>
+
+<p class="bulk-note"><strong>Buying for a shop?</strong> Order 12 or more pieces of any item above and message us on WhatsApp for the wholesale rate.</p>
+
+<footer>
+    © 2026 # Wholesaler — nails, cosmetics, machines &amp; decorations, wholesale.
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/923258455725" target="_blank" aria-label="Message us on WhatsApp">
+    <svg viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3C9.4 3 4 8.4 4 15c0 2.4.7 4.6 1.9 6.5L4 29l7.7-1.9c1.8 1 3.9 1.6 6.1 1.6h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8h-.2c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.6 1.2 1.2-4.5-.3-.4C5.2 17.6 4.7 16 4.7 15c0-6.2 5.1-11.3 11.3-11.3S27.3 8.8 27.3 15 22.2 24.8 16 24.8zm6.2-8.4c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.7.1-.2.3-.8 1.1-1 1.3-.2.2-.4.3-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3z"/>
+    </svg>
+</a>
+
+</body>
+</html>
